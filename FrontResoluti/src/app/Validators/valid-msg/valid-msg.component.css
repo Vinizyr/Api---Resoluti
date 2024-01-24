@@ -1,0 +1,17 @@
+.messages-error {
+    color: red;
+    animation-duration: 0.3s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+      margin-left: 20%;
+      width: 100%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }

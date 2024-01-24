@@ -1,0 +1,116 @@
+<div class="container">
+  <a class="row">
+    <img src="assets\ResolutiImagem.jpg" alt="" />
+  </a>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Sobrenome</th>
+        <th scope="col">Data de Nascimento</th>
+        <th scope="col">Email</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of pessoasList">
+        <th>{{ item.nome }}</th>
+        <td>{{ item.sobreNome }}</td>
+        <td>{{ item.dataNascimento | date : "dd/MM/yyyy" }}</td>
+        <td>{{ item.email }}</td>
+        <td>
+          <button
+            class="btn-editar"
+            data-toggle="modal"
+            (click)="abrirModalEditar(item)"
+          >
+            <i class="fas fa-edit"></i>
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </button>
+        </td>
+        <td>
+          <button class="btn-excluir">
+            <fa-icon [icon]="faTrash" (click)="deletar(item.pessoaId)"></fa-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p-dialog
+  header="Editar Usuário"
+  [(visible)]="abrirModal"
+  [style]="{ 'width': '50vw', 'height':'20vw' }"
+  [modal]="true"
+>
+  <div [formGroup]="formEdit">
+    <div class="row" style="padding-left: 10%; padding-right: 10%;">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            formControlName="nome"
+          />
+          <app-valid-msg [control]="formEdit.controls['nome']"></app-valid-msg>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nome">Sobrenome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            formControlName="sobrenome"
+          />
+          <app-valid-msg
+            [control]="formEdit.controls['sobrenome']"
+          ></app-valid-msg>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+              <label for="nome">Data de Nascimento</label>
+              <input type="text" class="form-control"
+              formControlName="dataNascimento">
+              <app-valid-msg [control]="formEdit.controls['dataNascimento']"></app-valid-msg>
+          </div>
+      </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="senha">RG</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="rg"
+              placeholder="999.999.999.9"
+            />
+            <app-valid-msg [control]="formEdit.controls['rg']"></app-valid-msg>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="cpf"
+              id="cpf"
+              placeholder="999.999.999.99"
+            />
+            <app-valid-msg [control]="formEdit.controls['cpf']"></app-valid-msg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Salvar" severity="success" [disabled]="formEdit.invalid" (click)="EditarUsuario()"></p-button>
+    <p-button label="Cancelar" (click)="fecharModal()" severity="danger"></p-button>
+  </ng-template>
+</p-dialog>

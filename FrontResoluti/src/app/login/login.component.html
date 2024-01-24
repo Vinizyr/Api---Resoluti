@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="login-container">
+    <div class="login-form">
+      <h2>Login</h2>
+      <form [formGroup]="formulario">
+
+        <div class="row">
+          <div class="p-field">
+            <label for="username">Username</label>
+            <input class="form-control" id="username" type="text" formControlName="username"
+             />
+             <app-valid-msg [control]="formulario.controls['username']"></app-valid-msg>
+          </div>
+        </div>
+        <div class="row">
+          <div class="p-field">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" formControlName="senha" name="password" />
+            <app-valid-msg [control]="formulario.controls['senha']"></app-valid-msg>
+          </div>
+        </div>
+
+
+      </form>
+      <!-- <button type="button" class="btn btn-primary" (click)="t()">local</button> -->
+      <button type="button" class="btn btn-primary" (click)="entrar()">Entrar</button>
+    </div>
+    <div class="company-image">
+      <img src="assets\ResolutiImagem.jpg" alt="Logo da Empresa">
+    </div>
+
+  </div>
+</div>
+<hr>
+<p style="text-align: center;">
+  <a class="cadastre-se" [routerLink]="['/cadastro']">Cadastre-se</a>
+</p>
+
+
+
