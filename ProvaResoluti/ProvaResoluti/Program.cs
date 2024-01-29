@@ -88,7 +88,7 @@ builder.Services.AddSwaggerGen(option =>
 });
 builder.Services.AddEntityFrameworkNpgsql()
     .AddDbContext<ResolutiContext>(options =>
-    options.UseNpgsql("Server=localhost;user id=postgres;password=postgres;database=ResolutiDB;Pooling=false;Application Name=ResolutiBD"));
+    options.UseNpgsql("Server=localhost;user id=*;password=*;database=*;Pooling=false;Application Name=*"));
 
 var app = builder.Build();
 
