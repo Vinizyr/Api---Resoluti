@@ -8,6 +8,6 @@ namespace ProvaResoluti.App.Features.Autenticacao
 {
     public static class Settings
     {
-        public static string Secret = "eae48712db574c85aebda66c2b78910c";
+        public static string Secret = "CodigoHashDe36caracteres";
     }
 }
